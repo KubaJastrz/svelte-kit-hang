@@ -1,13 +1,19 @@
 <script lang="ts">
 	import Header from '$lib/Header/index.svelte';
 	import '../app.css';
+
+  import {QueryClient, QueryClientProvider} from '@sveltestack/svelte-query'
+
+  const queryClient = new QueryClient()
 </script>
 
 <Header />
 
-<main>
-	<slot />
-</main>
+<QueryClientProvider client={queryClient}>
+  <main>
+    <slot />
+  </main>
+</QueryClientProvider>
 
 <footer>
 	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
